@@ -18,6 +18,9 @@
     <p>ユーザー名<span th:text="${user.name}"></span></p>
     <p>メールアドレス<span th:text="${user.email}"></span></p>
     
+    <!-- 管理者専用画面へのリンク -->
+    <a href="/admin" sec:authorize="hasAuthority('ADMIN')">管理者用画面へ</a>
+    
     <!-- ログアウト -->
     <form th:action="@{/logout}" method="post">
 		<input type="submit" value="ログアウト">

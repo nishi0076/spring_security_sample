@@ -39,33 +39,39 @@ public class LoginUser implements UserDetails {
 	}
 	
 	
-	// 以降は今回利用しない
-	
-	
 	// ユーザーに付与された権限を返却
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.NO_AUTHORITIES;
+    	// ロールカラムと照らし合わせて、認証ユーザーにロールを設定
+    	if (this.user.getRole().equals("管理者")) {
+    		return AuthorityUtils.createAuthorityList("ADMIN", "GENERAL");
+    	}
+    	
+        return AuthorityUtils.createAuthorityList("GENERAL");
     }
 
+    
     // アカウントの有効期限の状態を判定
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    
     // アカウントのロック状態を判定
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    
     // 資格情報の有効期限の状態を判定
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    
     // 有効なユーザかを判定
     @Override
     public boolean isEnabled() {

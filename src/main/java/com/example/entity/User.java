@@ -29,6 +29,10 @@ public class User {
 	
 	@Column(name = "PASSWORD")
 	private String password;
+	
+	
+	@Column(name = "ROLE")
+	private String role;
 
 
 	public Integer getId() {
@@ -68,6 +72,16 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
