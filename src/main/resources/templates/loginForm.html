@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+</head>
+<body>
+	<!-- th:if="${param.error}"がtureならエラーメッセージが出力 -->
+    <div　th:if="${param.error}">
+		<p>ログイン名またはメールアドレスが違います。</p>
+	</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label>メールアドレス</label>
+			<input type="email" name="email">
+		</div>
+		<div>
+			<label>パスワード</label>
+			<input type="password" name="password">
+		</div>
+		<div>
+			<input type="submit" value="ログイン">
+		</div>
+	</form>
+</body>
+</html>
